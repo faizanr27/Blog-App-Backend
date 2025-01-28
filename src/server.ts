@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 const cors = require('cors')
 import dotenv from 'dotenv';
-// import postRoutes from './routes/post.Routes';
+import postRoutes from './routes/post.Routes';
 import authRoutes from './routes/auth.Routes';
 import cookieParser from "cookie-parser";
 import protectedRoutes from './routes/protected.Routes';
@@ -43,7 +43,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));;
 
 // Routes
 app.use('/', protectedRoutes);
-// app.use('/api', postRoutes);
+app.use('/api', postRoutes);
 app.use('/api/auth', authRoutes);
 
 // Database Connection
