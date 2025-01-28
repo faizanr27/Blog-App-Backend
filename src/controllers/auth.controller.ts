@@ -253,6 +253,7 @@ exports.logout = async (
 
         if (oldToken) {
             res.clearCookie(`${COOKIE_NAME}`, {
+                domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
                 httpOnly: true,
                 signed: true,
                 secure: isProduction,
