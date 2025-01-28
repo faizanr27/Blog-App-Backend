@@ -8,7 +8,7 @@ import protectedRoutes from './routes/protected.Routes';
 import passport from 'passport'
 import session from 'express-session';
 import connectDb from './db/db';
-
+import MongoStore from 'connect-mongo';
 dotenv.config();
 
 const app = express();
@@ -30,6 +30,10 @@ app.use(
         secret: process.env.SESSION_SECRET!,
         resave: false,
         saveUninitialized: false,
+        store: MongoStore.create({
+            mongoUrl: process.env.URI!,
+            ttl: 14 * 24 * 60 * 60
+        })
     })
 );
 app.use(passport.initialize())

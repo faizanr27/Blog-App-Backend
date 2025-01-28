@@ -13,6 +13,7 @@ const protected_Routes_1 = __importDefault(require("./routes/protected.Routes"))
 const passport_1 = __importDefault(require("passport"));
 const express_session_1 = __importDefault(require("express-session"));
 const db_1 = __importDefault(require("./db/db"));
+const connect_mongo_1 = __importDefault(require("connect-mongo"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 4000;
@@ -28,6 +29,10 @@ app.use((0, express_session_1.default)({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: connect_mongo_1.default.create({
+        mongoUrl: process.env.URI,
+        ttl: 14 * 24 * 60 * 60
+    })
 }));
 app.use(passport_1.default.initialize());
 app.use(passport_1.default.session());
