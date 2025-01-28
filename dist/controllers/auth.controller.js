@@ -163,8 +163,8 @@ exports.googleCallback = [
                 sameSite: isProduction ? "none" : "lax",
             });
             console.log('Successfully authenticated, redirecting...');
-            res.redirect('http://localhost:5173/');
-            // res.redirect('http://localhost:5173/dashboard');
+            // res.redirect('http://localhost:5173/');
+            res.redirect('https://dev-blogg.vercel.app');
         }
         catch (error) {
             console.error('Google callback error:', error);
@@ -200,8 +200,8 @@ exports.githubCallback = [
                 sameSite: isProduction ? "none" : "lax",
             });
             console.log('Successfully authenticated, redirecting...');
-            // res.redirect('http://localhost:5173/dashboard');
-            res.redirect('https://dev-blogg.vercel.app');
+            res.redirect('http://localhost:5173/');
+            // res.redirect('https://dev-blogg.vercel.app');
         }
         catch (error) {
             console.error('Github callback error:', error);

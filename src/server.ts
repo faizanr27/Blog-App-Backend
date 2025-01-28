@@ -8,6 +8,7 @@ import protectedRoutes from './routes/protected.Routes';
 import passport from 'passport'
 import session from 'express-session';
 import connectDb from './db/db';
+import MongoStore from 'connect-mongo';
 
 dotenv.config();
 
@@ -17,7 +18,7 @@ const PORT = process.env.PORT || 4000;
 // Middleware
 const corsOptions = {
 
-    origin: ['https://dev-blogg.vercel.app/','http://localhost:5173'],
+    origin: ['https://dev-blogg.vercel.app','http://localhost:5173'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
@@ -30,6 +31,10 @@ app.use(
         secret: process.env.SESSION_SECRET!,
         resave: false,
         saveUninitialized: false,
+        store: MongoStore.create({
+            mongoUrl: process.env.URI!,
+            ttl: 14 * 24 * 60 * 60
+        })
     })
 );
 app.use(passport.initialize())
