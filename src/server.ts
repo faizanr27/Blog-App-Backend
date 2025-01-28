@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 4000;
 // Middleware
 const corsOptions = {
 
-    origin: ['https://dev-blogg.vercel.app/','http://localhost:5173'],
+    origin: ['https://dev-blogg.vercel.app','http://localhost:5173'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
