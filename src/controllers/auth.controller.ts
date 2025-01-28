@@ -50,7 +50,7 @@ exports.signUp = async (req: Request, res: Response) => {
         const expires = new Date(Date.now() + expiresInMilliseconds);
         console.log("reached here 6")
         res.cookie(`${COOKIE_NAME}`, token, {
-          domain: isProduction ? "dev-blogg.vercel.app" : undefined,
+          domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
           expires,
           httpOnly: true,
           signed: true,
@@ -97,7 +97,7 @@ exports.login = async (req: Request, res: Response) => {
         const expires = new Date(Date.now() + expiresInMilliseconds);
 
         res.cookie(`${COOKIE_NAME}`, token, {
-          domain: isProduction ? "dev-blogg.vercel.app" : undefined,
+          domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
           expires,
           httpOnly: true,
           signed: true,
@@ -179,7 +179,7 @@ exports.googleCallback = [
         const expires = new Date(Date.now() + expiresInMilliseconds);
 
         res.cookie(`${COOKIE_NAME}`, token, {
-          domain: isProduction ? "dev-blogg.vercel.app" : undefined,
+          domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
           expires,
           httpOnly: true,
           signed: true,
@@ -222,7 +222,7 @@ exports.googleCallback = [
         const expires = new Date(Date.now() + expiresInMilliseconds);
 
         res.cookie(`${COOKIE_NAME}`, token, {
-          domain: isProduction ? "dev-blogg.vercel.app" : undefined,
+          domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
           expires,
           httpOnly: true,
           signed: true,
