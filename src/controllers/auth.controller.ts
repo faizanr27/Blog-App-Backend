@@ -188,8 +188,8 @@ exports.googleCallback = [
         });
 
         console.log('Successfully authenticated, redirecting...');
-        res.redirect('http://localhost:5173/');
-        // res.redirect('http://localhost:5173/dashboard');
+        // res.redirect('http://localhost:5173/');
+        res.redirect('http://dev-blogg.vercel.app');
       } catch (error) {
         console.error('Google callback error:', error);
         res.status(500).json({ message: 'Internal server error.' });
