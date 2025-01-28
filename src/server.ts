@@ -9,7 +9,6 @@ import passport from 'passport'
 import session from 'express-session';
 import connectDb from './db/db';
 import MongoStore from 'connect-mongo';
-
 dotenv.config();
 
 const app = express();
@@ -39,7 +38,6 @@ app.use(
 );
 app.use(passport.initialize())
 app.use(passport.session())
-
 app.use(express.json())
 app.use(cookieParser(process.env.COOKIE_SECRET));;
 

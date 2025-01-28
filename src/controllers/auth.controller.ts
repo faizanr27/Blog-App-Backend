@@ -50,7 +50,7 @@ exports.signUp = async (req: Request, res: Response) => {
         const expires = new Date(Date.now() + expiresInMilliseconds);
         console.log("reached here 6")
         res.cookie(`${COOKIE_NAME}`, token, {
-          domain: isProduction ? "dev-blogg.vercel.app" : undefined,
+          domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
           expires,
           httpOnly: true,
           signed: true,
@@ -97,7 +97,7 @@ exports.login = async (req: Request, res: Response) => {
         const expires = new Date(Date.now() + expiresInMilliseconds);
 
         res.cookie(`${COOKIE_NAME}`, token, {
-          domain: isProduction ? "dev-blogg.vercel.app" : undefined,
+          domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
           expires,
           httpOnly: true,
           signed: true,
@@ -179,7 +179,7 @@ exports.googleCallback = [
         const expires = new Date(Date.now() + expiresInMilliseconds);
 
         res.cookie(`${COOKIE_NAME}`, token, {
-          domain: isProduction ? "dev-blogg.vercel.app" : undefined,
+          domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
           expires,
           httpOnly: true,
           signed: true,
@@ -188,8 +188,8 @@ exports.googleCallback = [
         });
 
         console.log('Successfully authenticated, redirecting...');
-        res.redirect('http://localhost:5173/');
-        // res.redirect('http://localhost:5173/dashboard');
+        // res.redirect('http://localhost:5173/');
+        res.redirect('https://dev-blogg.vercel.app/');
       } catch (error) {
         console.error('Google callback error:', error);
         res.status(500).json({ message: 'Internal server error.' });
@@ -222,7 +222,7 @@ exports.googleCallback = [
         const expires = new Date(Date.now() + expiresInMilliseconds);
 
         res.cookie(`${COOKIE_NAME}`, token, {
-          domain: isProduction ? "dev-blogg.vercel.app" : undefined,
+          domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
           expires,
           httpOnly: true,
           signed: true,
@@ -253,6 +253,7 @@ exports.logout = async (
 
         if (oldToken) {
             res.clearCookie(`${COOKIE_NAME}`, {
+                domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
                 httpOnly: true,
                 signed: true,
                 secure: isProduction,
