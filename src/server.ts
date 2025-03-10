@@ -12,7 +12,7 @@ import MongoStore from 'connect-mongo';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 const corsOptions = {
@@ -39,6 +39,7 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(express.json())
+app.use(express.urlencoded({extended : true}))
 app.use(cookieParser(process.env.COOKIE_SECRET));;
 
 // Routes

@@ -25,7 +25,7 @@ exports.signUp = async (req: Request, res: Response) => {
         const existingUser = await User.findOne({name})
         console.log("reached here3")
         if(existingUser){
-            res.status(400).json("user already exists")
+            return res.status(400).json("user already exists")
         }
 
         const myEncPassword = await bcrypt.hash(password,10)
@@ -50,7 +50,7 @@ exports.signUp = async (req: Request, res: Response) => {
         const expires = new Date(Date.now() + expiresInMilliseconds);
         console.log("reached here 6")
         res.cookie(`${COOKIE_NAME}`, token, {
-          domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
+          domain: isProduction ? "blog.shortsy.xyz" : undefined,
           expires,
           httpOnly: true,
           signed: true,
@@ -59,7 +59,7 @@ exports.signUp = async (req: Request, res: Response) => {
       });
       console.log("reached here 7")
 
-      res.status(200).json({message:`${newUser.name} has been successfully logged in.`,id:newUser._id})
+     return res.status(200).json({message:`${newUser.name} has been successfully logged in.`,id:newUser._id})
 
     } catch (error) {
         console.log(req.body)
@@ -97,7 +97,7 @@ exports.login = async (req: Request, res: Response) => {
         const expires = new Date(Date.now() + expiresInMilliseconds);
 
         res.cookie(`${COOKIE_NAME}`, token, {
-          domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
+          domain: isProduction ? "blog.shortsy.xyz" : undefined,
           expires,
           httpOnly: true,
           signed: true,
@@ -106,7 +106,7 @@ exports.login = async (req: Request, res: Response) => {
       });
       console.log("reached here 3")
 
-      res.status(200).json({message:`${user.name} has been successfully logged in.`,id:user._id})
+      return res.status(200).json({message:`${user.name} has been successfully logged in.`,id:user._id})
       console.log("wadwdwadwaawdwa")
 
     } catch (error:any) {
@@ -253,7 +253,7 @@ exports.logout = async (
 
         if (oldToken) {
             res.clearCookie(`${COOKIE_NAME}`, {
-                domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
+                domain: isProduction ? "blog.shortsy.xyz" : undefined,
                 httpOnly: true,
                 signed: true,
                 secure: isProduction,

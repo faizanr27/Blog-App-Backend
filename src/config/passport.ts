@@ -67,27 +67,6 @@ passport.use(
 );
 
 
-const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: process.env.SECRET_KEY as string
-};
-passport.use(
-  'jwt',
-  new JwtStrategy(jwtOptions, async (jwt_payload, done) => {
-    try {
-      const user = await User.findById(jwt_payload.userId);
-
-      if (user) {
-        return done(null, user);
-      }
-
-      return done(null, false);
-    } catch (error) {
-      return done(error, false);
-    }
-  })
-);
-
 passport.serializeUser((user: any, done) => {
   done(null, user.id);
 });
@@ -101,4 +80,25 @@ passport.deserializeUser(async (id: string, done) => {
   }
 });
 
-export default passport;
+export default passport
+// const jwtOptions = {
+//   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+//   secretOrKey: process.env.JWT_SECRET as string
+// };
+
+// passport.use(
+//   'jwt',
+//   new JwtStrategy(jwtOptions, async (jwt_payload, done) => {
+//     try {
+//       const user = await User.findById(jwt_payload.userId);
+
+//       if (user) {
+//         return done(null, user);
+//       }
+
+//       return done(null, false);
+//     } catch (error) {
+//       return done(error, false);
+//     }
+//   })
+// );
