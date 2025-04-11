@@ -179,7 +179,7 @@ exports.googleCallback = [
         const expires = new Date(Date.now() + expiresInMilliseconds);
 
         res.cookie(`${COOKIE_NAME}`, token, {
-          domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
+          domain: isProduction ? "blog.shortsy.xyz" : undefined,
           expires,
           httpOnly: true,
           signed: true,
@@ -222,7 +222,7 @@ exports.googleCallback = [
         const expires = new Date(Date.now() + expiresInMilliseconds);
 
         res.cookie(`${COOKIE_NAME}`, token, {
-          domain: isProduction ? "blog-app-backend-production-820e.up.railway.app" : undefined,
+          domain: isProduction ? "blog.shortsy.xyz" : undefined,
           expires,
           httpOnly: true,
           signed: true,
