@@ -27,7 +27,7 @@ export const createPost = async (req: Request, res: Response): Promise<void> => 
 // Get all posts by different users
 export const getAllPost = async (req: Request, res: Response): Promise<void> => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find().populate('userId', 'name');
     res.json(posts);
   } catch (err) {
     res.status(500).json({ message: "Server error." });
@@ -52,7 +52,7 @@ export const getAllUserPost = async (req: Request, res: Response): Promise<void>
 // Get a single post by ID
 export const getSinglePost = async (req: Request, res: Response): Promise<void> => {
   try {
-    const post = await Post.findById(req.params.id);
+    const post = await Post.findById(req.params.id).populate('userId', 'name');
     if (!post) {
       res.status(404).json({ message: "Post not found" });
       return;
